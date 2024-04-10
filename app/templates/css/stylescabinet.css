@@ -1,0 +1,143 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*, *:before, *:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus, :active{outline: none;}
+a:focus, a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html, body{
+	height: 100%;
+	width: 100%;
+	font-style: 100%;
+	line-height: 1;
+	font-style: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea{font-family: inherit;}
+.jomhuriafont{
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.flexbox-container{
+    display: flex;
+    height: 70px;
+    min-width: 1000px;
+    margin: 10px;
+   flex-flow:row wrap;
+    justify-content: space-around;
+    background-color:#ffff;
+    align-items: center;
+    border-radius: 20px;
+}
+.pfp_info{
+    display: flex;
+    background-color: #D9D9D9;
+    flex-direction: row;
+
+}
+.pfp{
+    display: flex;
+    justify-items: flex-start;
+    margin-left: 7%;
+    height: 300px ;
+    width: 300px;
+    
+}
+.info{
+    display: flex ;
+    position: relative;
+    left: 20%;
+    flex-direction: column;
+    align-items: center;
+    min-width: 450px;
+    height: 300px;
+    padding: 2%;
+    
+}
+.picture{
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+}
+.description{
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 400%;
+
+}
+.item{
+    font-size: 400%;
+    background-color: #ffff;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    background: fixed;
+}
+.login{
+    justify-content: flex-end;
+}
+html{
+    background-color: #e5e5e5;
+}
+.recomended-and-filters{
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-items: stretch;
+}
+.recomended{
+    display: flex;
+    flex-flow:  row wrap;
+    width: 30%;
+    height: 100%;
+    margin: 70px;
+    padding: 70px;
+    padding-top: 50px;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffff 20%;
+    flex-grow: 2;
+
+}
+.filters{
+ display: flex;
+ background-color: #ffff 20%;
+ flex-grow: 2;
+ justify-content: center;
+ font-family: "Jomhuria", serif;
+ font-weight: 400;
+ font-style: normal;
+ font-size: 400%;
+ padding: 50px;
+}
+.game{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10%;
+    
+}
+.pictures{
+    width: 260px;
+    height: 300px;
+    border-radius: 8px;
+}
+.item:hover{
+        font-size: 500%;
+}
+ 

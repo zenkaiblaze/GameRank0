@@ -1,0 +1,123 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*, *:before, *:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus, :active{outline: none;}
+a:focus, a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html, body{
+	height: 100%;
+	width: 100%;
+	font-style: 100%;
+	line-height: 1;
+	font-style: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea{font-family: inherit;}
+.jomhuriafont{
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.flexbox-container{
+    display: flex;
+    height: 70px;
+    min-width: 1000px;
+    margin: 10px;
+   flex-flow:row wrap;
+    justify-content: space-around;
+    background-color:#ffff;
+    align-items: center;
+    border-radius: 20px;
+}
+.flex-container{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    flex-flow: row wrap;
+    justify-content: center;
+    justify-items: center;
+    background-color:#e5e5e5;
+    align-items: center;
+}
+.recomended{
+    display: flex;
+    flex-flow: wrap;
+    min-width: 1000px;
+    margin: 70px;
+    padding: 70px;
+    padding-top: 0px;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+.game{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.text{
+    font-size: 35px;
+    text-align: center;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.item{
+    font-size: 400%;
+    background-color: #ffff;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    background: fixed;
+}
+.login{
+    justify-content: flex-end;
+}
+.item:hover{
+    font-size: 500%;
+}
+html{
+    background-color: #e5e5e5;
+}
+.searchbar{
+    width: 600px;
+    height: 60px;
+    border-radius: 8px;
+    margin: 25px;
+    padding: 20px;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+}
+.searchbutton{
+    width: 75px;
+    border-radius: 8px;
+    height: 60px;
+    background-color: black;
+    color:  #ffff;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+}
+
+.pictures{
+    width: 160px;
+    height: 200px;
+    border-radius: 8px;}
