@@ -1,0 +1,26 @@
+html{
+    background-color: #e5e5e5;
+}
+.center{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+}
+.input{
+    margin: 10px;
+    height: 45px;
+    width: 300px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+}
+.button{
+    margin: 10px;
+    width: 200px;
+    height: 30px;
+    border-radius: 8px;
+}

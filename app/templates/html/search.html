@@ -1,0 +1,45 @@
+{% extends 'html/base.html'%}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href= "{% static 'css/styles.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="flex-container">
+        <form action = "{% url 'gamelands:search' %}" method="post">
+            {% csrf_token %}
+            <input class="searchbar" type="text" name="searchbar" value="{{search_filter}}">
+            <button class="searchbutton" type="submit" name = "search">Search</button>
+            <button class="searchbutton" type ="submit" name = "refresh">Drop filters</button>
+        
+    </div>
+    <div class="filters-box">
+        <select class="filter-option" name="game_filters" value="{{variable}}" id="">
+            {% for k, v in sorted_options.items %}
+            <option value= {{k}} {% if k == drop_list %}  selected {% endif %}>{{v}}</option>
+            {% endfor %}
+            </select>
+            <p>Release year</p>
+            <input type="int" placeholder="From" name="from_year" value = "{{from_year}}">
+            <input type="int" placeholder="To" name="to_year" value = "{{to_year}}">
+            {% for dev in all_devs %}
+            <br>  <label for=""> {{dev}} <input class="checkbox" type="checkbox" name="checkbox {{dev}}" 
+                value=""{% if dev in checkbox_check %} checked {% endif %} ></label> <br>
+            {% endfor %}
+            <button type="submit" class="apply-filters">Apply filters</button>
+    </div>
+
+        </form>
+    <div class="box-games">
+    {% for game in games %}
+    <div class="game">
+        <img class="pictures" src="{% static 'pics/'%}{{game.image}}" alt="">
+        
+        <p>{{game.game_name}}</p><br>
+       <p>{{game.release_year}}</p><br>
+        <p>{{game.metacritic_score}}</p><br>
+        <p>{{game.howlongtobeat}}</p><br>
+    
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}

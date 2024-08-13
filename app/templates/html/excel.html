@@ -1,0 +1,72 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block styles %}
+<style>
+    html{
+        background-color: solid black;
+    }
+    table, th, td {
+        border:1px solid black;
+        
+      }
+    input{
+        border: 1px solid black;
+    }
+
+</style>
+{% endblock %}
+{% block content %}
+<p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Release year</th>
+            <th>Metacritic score</th>
+            <th>Developers</th>
+            <th>HowLongToBeat</th>
+            <th>Image</th>
+            <th>Delete</th>
+        </tr>
+          {%for game in games%}
+        <tr>
+            <td>{{game.id}}</td>
+            <td>{{game.game_name}}</td>
+            <td>{{game.release_year}}</td>
+            <td>{{game.metacritic_score}}</td>
+            <td>{{game.developers}}</td>
+            <td>{{game.howlongtobeat}}</td>
+            <td>{{game.image}}</td>
+            <td> 
+                <form action="" method="post">
+                    {% csrf_token %}
+                        <button type="submit" name="delete"  value = "{{game.id}}">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+    
+</p>
+<form action="" method ="post">
+    {% csrf_token %}
+    <input type="number" name = "choose_id">
+    <input type="text" name = "change_game_name">
+    <input type="number" name="change_release">
+    <input type="number" name="change_meta">
+    <input type="text" name="change_devs">
+        <button type="submit" name="change" value="qweq"> CHANGE</button>
+    </form>
+    
+    <form  action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="id">
+        <input type="text" name="name">
+        <input type="number" name = "release">
+        <input type="number" name="score">
+        <input type="text" name="devs">
+        <input type="number" name="howlong">
+        <input type="text" name="img">
+        <button type="submit" name = "add a row"> Submit</button>
+    </form>
+{% endblock %}

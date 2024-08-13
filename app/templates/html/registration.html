@@ -1,0 +1,19 @@
+{% extends 'html/base.html'%}
+{% load static %}
+{% block styles %}
+<style>
+    html{
+        background-color: black;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<form action="{% url 'gamelands:cabinet' %}" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Nickname" name = "nick"> <br>
+    <input type="datetime" placeholder="Birthyear" name="birthyear"><br>
+    <input type="email" placeholder="Email or phone number" name = "email"> <br>
+    <input type="password" placeholder="Password" name="password"><br>
+    <button type="submit" name="submit" value = "Login">Submit</button>
+</form>
+{% endblock %}

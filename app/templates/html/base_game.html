@@ -1,0 +1,8 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href= "{% static 'css/base-game.css' %}">
+    <img class="game-picture" src="{% static 'pics/'%}{{image}}" alt="image">
+    <div class="info-container"><p> {{name}} <br> Release year: {{year}} <br> Developers: {{developers}} <br> {{howlongtobeat}} hours to beat<br>
+        Metacritic score: {{metacritic}}</p></div>
+{% endblock %}  

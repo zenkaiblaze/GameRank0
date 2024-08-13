@@ -1,44 +1,25 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href= 'css/styles.css'>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-    <style>
-        
-    </style>
-</head>
-<body>
-<header>
-    
-    <div class="flexbox-container">
-           
-            <div><button class = "item">Index Page</button></div>
-            <div><button class="item">Users</button></div>
-            <div><button class="item login">Log in</button></div>
-        
+{% extends 'html/base.html'%}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href= "{% static 'css/styles.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="flex-container">
+        <form action = "{% url 'gamelands:search' %}" method="post">
+            {% csrf_token %}
+            <input class="searchbar" type="text" name="searchbar"> 
+            <button class="searchbutton" type="submit" name = "search">Search</button>
+        </form> 
     </div>
-</header>
-<div class="flex-container">
-    <input class="searchbar" type="text"> 
-    <button class="searchbutton" type="submit">Search</button>
-</div>
 
-<div class="recomended">
-    <div class="game"><img class="pictures" src="pics/mgsjpg.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/dmc.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/arkham_city.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/mgsjpg.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/dmc.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/arkham_city.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/mgsjpg.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/dmc.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-    <div class="game"><img class="pictures" src="pics/arkham_city.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-</div>
-<footer></footer>
-</body>
-</html>
+    <div class="recomended">
+        {% for game in games %}
+            <div class="game">
+                <a href="{% url 'gamelands:titlepage' game.game_id %}">
+                    <img class="pictures" src="{% static 'pics/'%}{{game.image}}" alt=""> 
+                    <p class="text">{{game.name}} <br>{{game.year}} <br>{{game.metacritic}}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

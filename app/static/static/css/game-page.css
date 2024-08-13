@@ -1,0 +1,107 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*, *:before, *:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus, :active{outline: none;}
+a:focus, a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html, body{
+	height: 100%;
+	width: 100%;
+	font-style: 100%;
+	line-height: 1;
+	font-style: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea{font-family: inherit;}
+.jomhuriafont{
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.flexbox-container{
+    display: flex;
+    height: 70px;
+    min-width: 1000px;
+    margin: 10px;
+   flex-flow:row wrap;
+    justify-content: space-around;
+    background-color:#ffff;
+    align-items: center;
+    border-radius: 20px;
+}
+.pfp_info{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+.pfp{
+    display: flex;
+    justify-items: flex-start;
+    margin-left: 3%;
+    height: 500px;
+    width: 300px;
+    
+}
+.info{
+    display: flex ;
+    position: relative;
+    left: 20%;
+    flex-direction: column;
+    align-items: center;
+    min-width: 450px;
+    height: 100%;
+    padding: 2%;
+}
+.picture{
+    width: 400px;
+    height: 450px;
+    position: absolute;
+}
+.description{
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 200%;
+    width: 800px;
+    background-color: #ffff;
+    border-radius: 7%;
+    padding: 20px;
+    
+}
+.item{
+    font-size: 400%;
+    background-color: #ffff;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    background: fixed;
+}
+.login{
+    justify-content: flex-end;
+}
+html{
+    background-color: #e5e5e5;
+}
+.pictures{
+    width: 260px;
+    height: 300px;
+    border-radius: 8px;
+}
+.item:hover{
+        font-size: 500%;
+}
+html{
+    background-color: #D9D9D9;
+}

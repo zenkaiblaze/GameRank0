@@ -1,0 +1,16 @@
+{% extends 'html/base.html'%}
+{% load static %}
+{% block styles%}
+<link rel="stylesheet" href="{% static 'css/login-signup.css'%}">
+{% endblock %}
+{% block content %}
+<div class="center">
+<form action="html/cabinet.html" method="post">
+    {% csrf_token %}
+<input class="input" type="text" placeholder="Email or phone number" name = "email"> <br>
+<input class="input" type= "password" placeholder="Password" name="password"><br>
+<button class="button" type="submit" name="submit" value="Login">Submit</button>
+<button class="button"> <a href="{% url 'gamelands:registration'%}">Sign up</a> </button>
+</form>
+</div>
+{% endblock %}

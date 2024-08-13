@@ -1,0 +1,32 @@
+.flexbox-container{
+    display: flex;
+    height: 70px;
+    min-width: 1000px;
+    margin: 10px;
+   flex-flow:row wrap;
+    justify-content: space-around;
+    background-color:#ffff;
+    align-items: center;
+    border-radius: 20px;
+}
+.text{
+    font-size: 35px;
+    text-align: center;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.item{
+    font-size: 400%;
+    background-color: #ffff;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    background: fixed;
+}
+.login{
+    justify-content: flex-end;
+}
+.item:hover{
+    font-size: 500%;
+}

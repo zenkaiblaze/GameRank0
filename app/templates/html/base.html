@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href= "{% static 'css/null-style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href= "{% static 'css/header.css' %}">
+    <meta charset="UTF-8" />
+    {% block styles %}<title>Title</title> {% endblock %}
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    {% block header_main %}
+        <header>
+            <div class="flexbox-container">
+                
+                <div><button class = "item"> <a href="{% url 'gamelands:index'%}">Index Page</a></button></div>
+                <div><button class="item"><a href="{% url 'gamelands:cabinet'%}">Users</a></button></div>
+                {% if request.session.name %}
+                    <div><button class="item login" name="login-name"> {{request.session.name}} </button></div>
+                    <form action="{% url 'gamelands:registration' %}" method="post">
+                        {% csrf_token %}
+                       <div><button class="item login" name="logout" value="1">   Log out  </button></div>
+                       </form>
+                {% else %}
+                    <div><button class="item login" name="login-name"><a href="{% url 'gamelands:login' %}">Log in</a></button></div>
+                {% endif %}
+            </div>
+
+        </header>
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+    {% block footer_main %}
+    {% endblock %}
+</body>
+</html>
