@@ -29,6 +29,8 @@ class Games(models.Model):
     null = True,
     blank = True
     )
+    game_genres = models.CharField(max_length= 200,
+    null = True)
     def __str__(self) -> str:
         return f' {self.game_name}'
 class User(models.Model):
@@ -44,6 +46,18 @@ class Table(models.Model):
     username = models.CharField(max_length=20, null= True)
     def __str__(self):
         return f'{self.name} {self.username}'
-    
+
+
+class Genres(models.Model):
+    id = models.IntegerField
+    genre = models.CharField(
+        max_length=200,
+        null= True
+    )
+
+class TablesCombined(models.Model):
+    game_id = models.IntegerField 
+    genre_id = models.IntegerField
+    relationship_factor = models.IntegerField
 
 # Create your models here.

@@ -11,6 +11,7 @@ from django.urls import reverse
 import operator
 from django.db.models import Q
 from functools import reduce
+import json
 
 
 def return_index(request):
@@ -103,6 +104,19 @@ def search_page(request):
     if request.POST.get("searchbar"):
         search_auto = request.POST.get("searchbar")
     all_devs_arr = []
+    all_genres_arr = []
+    new_genres = []
+    for dicts in Games.objects.values("game_genres"):
+        res = json.loads(dicts["game_genres"])
+        all_genres_arr.append(res)
+    
+    for genres_dict in all_genres_arr:
+        for genre in genres_dict:
+            if genre  not in new_genres:
+                new_genres.append(genre)
+        
+    print(new_genres)
+            
     for value in Games.objects.values("developers"):
         all_devs_arr.append(value["developers"])
     all_devs_arr = ", ".join(all_devs_arr)
@@ -114,12 +128,17 @@ def search_page(request):
     for keys in request.POST.keys():
         if keys.startswith("checkbox"):
             dev_filter.append(keys[9:])
-    
+    genre_filter = []
+    for keys in request.POST.keys():
+        if keys.startswith("genres"):
+            genre_filter.append(keys[7:])
     filtered = Games.objects.filter(release_year__range = (from_year, to_year))
     filtered = filtered.filter(game_name__icontains = search_auto)
     if len(dev_filter) >= 1:
         filtered = filtered.filter(reduce(operator.or_,(Q(developers__icontains = x) for x in dev_filter)))
     filtered = filtered.order_by(variable)
+    if len(genre_filter) >= 1:
+        filtered = filtered.filter(reduce(operator.or_, (Q(game_genres__icontains = x) for x in genre_filter)))
     # filters_dict = {"release_year__range" : (from_year, to_year), "game_name__icontains" : search_auto,}
     # if len(dev_filter) >= 1:
     #     filters_dict.update({"developers__icontains" : (reduce(operator.or_,(Q(developers__icontains = x) for x in dev_filter)))})
@@ -139,6 +158,7 @@ def search_page(request):
         variable = "-metacritic_score"
         search_auto = ""
         dev_filter = []
+        genre_filter = []
     context = {
         "games": filtered,
         "search_filter" : search_auto, 
@@ -147,7 +167,9 @@ def search_page(request):
         "to_year" : to_year if to_year != 2040 else "",
         "sorted_options" : option_text,
         "drop_list" : variable,
-        "checkbox_check" : dev_filter, 
+        "checkbox_check" : dev_filter,
+        "all_genres": new_genres,
+        "check_genres": genre_filter,
     }
     return render(request, 'html/search.html', context=context)
 def return_cabinet(request):

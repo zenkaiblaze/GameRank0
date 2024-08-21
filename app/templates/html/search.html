@@ -21,13 +21,36 @@
             <p>Release year</p>
             <input type="int" placeholder="From" name="from_year" value = "{{from_year}}">
             <input type="int" placeholder="To" name="to_year" value = "{{to_year}}">
+            <details>
+            <fieldset>
             {% for dev in all_devs %}
-            <br>  <label for=""> {{dev}} <input class="checkbox" type="checkbox" name="checkbox {{dev}}" 
-                value=""{% if dev in checkbox_check %} checked {% endif %} ></label> <br>
+            <br>
+        
+            <ul>
+                <li> 
+                <label for=""> {{dev}} <input class="checkbox" type="checkbox" name="checkbox {{dev}}" 
+                    value=""{% if dev in checkbox_check %} checked {% endif %} ></label> <br>
+                </li>
+            </ul>
             {% endfor %}
+        </fieldset>
+    </details>
             <button type="submit" class="apply-filters">Apply filters</button>
-    </div>
-
+            <details>
+                <fieldset>
+                    {% for genre in all_genres %}
+                    <br>
+                    
+                    <ul>
+                        <li> 
+                            <label for=""> {{genre}} <input class="checkbox" type="checkbox" name="genres {{genre}}" 
+                                value=""{% if genre in check_genres %} checked {% endif %} ></label> <br>
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    </fieldset>
+                </details>
+            </div>
         </form>
     <div class="box-games">
     {% for game in games %}
