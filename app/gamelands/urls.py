@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from gamelands import views
+
+from gamelands.all_views import search_page_view
 app_name = 'gamelands'
 urlpatterns = [
     path('', views.return_index, name= 'index'),
@@ -13,6 +15,7 @@ urlpatterns = [
     path('registration/', views.registration_page, name = "registration"),
     path('counter/', views.page, name= 'counter'),
     path('excel/', views.excel_page, name = 'excel'),
-    path('search/', views.search_page, name = 'search'),
+    #path('search/', views.search_page, name = 'search'),
+    path('search/', search_page_view.search_page, name = 'search'),
 
 ]

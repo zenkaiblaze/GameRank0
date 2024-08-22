@@ -6,7 +6,7 @@ import pandas
 import os
 import random
 from django.shortcuts import redirect
-from gamelands.models import User, Table, Games
+from gamelands.models import User, Table, Games, TablesCombined, Genres
 from django.urls import reverse
 import operator
 from django.db.models import Q
@@ -104,48 +104,24 @@ def search_page(request):
     if request.POST.get("searchbar"):
         search_auto = request.POST.get("searchbar")
     all_devs_arr = []
-    all_genres_arr = []
-    new_genres = []
-    for dicts in Games.objects.values("game_genres"):
-        res = json.loads(dicts["game_genres"])
-        all_genres_arr.append(res)
-    
-    for genres_dict in all_genres_arr:
-        for genre in genres_dict:
-            if genre  not in new_genres:
-                new_genres.append(genre)
-        
-    print(new_genres)
-            
+
+    raw_genres_db = Genres.objects.all().values_list('genre')
+    all_genres_arr = list(map(lambda x: x[0], raw_genres_db))
+           
     for value in Games.objects.values("developers"):
         all_devs_arr.append(value["developers"])
     all_devs_arr = ", ".join(all_devs_arr)
     all_devs_arr  = all_devs_arr.split(", ")
     all_devs_arr = list(set(all_devs_arr))
-    #print(request.POST.keys())
-    #print(all_devs_arr)
     dev_filter = []
     for keys in request.POST.keys():
         if keys.startswith("checkbox"):
             dev_filter.append(keys[9:])
-    genre_filter = []
-    for keys in request.POST.keys():
-        if keys.startswith("genres"):
-            genre_filter.append(keys[7:])
     filtered = Games.objects.filter(release_year__range = (from_year, to_year))
     filtered = filtered.filter(game_name__icontains = search_auto)
     if len(dev_filter) >= 1:
         filtered = filtered.filter(reduce(operator.or_,(Q(developers__icontains = x) for x in dev_filter)))
     filtered = filtered.order_by(variable)
-    if len(genre_filter) >= 1:
-        filtered = filtered.filter(reduce(operator.or_, (Q(game_genres__icontains = x) for x in genre_filter)))
-    # filters_dict = {"release_year__range" : (from_year, to_year), "game_name__icontains" : search_auto,}
-    # if len(dev_filter) >= 1:
-    #     filters_dict.update({"developers__icontains" : (reduce(operator.or_,(Q(developers__icontains = x) for x in dev_filter)))})
-    # print(filters_dict)
-    # print(*filters_dict)
-    # ###filtered = Games.objects.filter(**filters_dict).order_by(variable)
-    # #filtered = Games.objects.filter(reduce(operator.or_,(Q(developers__icontains = x) for x in dev_filter))).order_by(variable)
     option_text = {"-metacritic_score": "From highest to lowest",
                    "metacritic_score" : "From lowest score to highest" ,
                    "release_year" : "Release year", 
@@ -168,8 +144,7 @@ def search_page(request):
         "sorted_options" : option_text,
         "drop_list" : variable,
         "checkbox_check" : dev_filter,
-        "all_genres": new_genres,
-        "check_genres": genre_filter,
+       
     }
     return render(request, 'html/search.html', context=context)
 def return_cabinet(request):

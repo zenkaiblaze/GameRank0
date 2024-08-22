@@ -38,17 +38,16 @@
             <button type="submit" class="apply-filters">Apply filters</button>
             <details>
                 <fieldset>
-                    {% for genre in all_genres %}
+                    
                     <br>
                     
                     <ul>
                         <li> 
-                            <label for=""> {{genre}} <input class="checkbox" type="checkbox" name="genres {{genre}}" 
+                            <label for=""> {{genre}} <input class="checkbox" type="checkbox" name="genre {{genre}}" 
                                 value=""{% if genre in check_genres %} checked {% endif %} ></label> <br>
                             </li>
                         </ul>
-                        {% endfor %}
-                    </fieldset>
+                       
                 </details>
             </div>
         </form>
