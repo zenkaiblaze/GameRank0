@@ -4,25 +4,9 @@
     <link rel="stylesheet" href= "{% static 'css/stylescabinet.css' %}">
 {% endblock %}   
 {% block content %}
-   <div class="pfp_info">
-        <div class="pfp">
-            <img class = picture src="pics/dmc.jpg" alt="">
-        </div>
-            <div class="info">
-                <p class="description">oijpq,qasdglhjwolhiheoijhwioj <br></p>
-                <p class="description">zxvvn ahkughoqgqoigjqpigjqpq </p>
-                <p class="description">pojhfhj</p>
-            </div>
-    </div>
-    <div class="recomended-and-filters">
-<div class="filters">FILTERS</div>
-        <div class="recomended">
-            <div class="game"><img class="pictures" src="pics/mgsjpg.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-            <div class="game"><img class="pictures" src="pics/dmc.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-            <div class="game"><img class="pictures" src="pics/arkham_city.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-            <div class="game"><img class="pictures" src="pics/mgsjpg.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div> 
-            <div class="game"><img class="pictures" src="pics/mgsjpg.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-            <div class="game"><img class="pictures" src="pics/dmc.jpg" alt=""> <p class="text">Name <br>year <br>score</p></div>
-        </div>
-    </div>
+   <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Submit">
+   </form>
 {% endblock %}

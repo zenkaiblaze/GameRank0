@@ -60,4 +60,10 @@ class TablesCombined(models.Model):
     genre_id = models.IntegerField
     relationship_factor = models.IntegerField
 
+
+class Profile(models.Model):
+    nickname = models.CharField(max_length= 20)
+    pfp = models.ImageField(upload_to="profilepics/", blank=True, null=True)
+    description = models.CharField(max_length= 240)
+    favourite = models.CharField(max_length=50)
 # Create your models here.

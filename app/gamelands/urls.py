@@ -2,11 +2,12 @@ from django.contrib import admin
 from django.urls import path, include
 from gamelands import views
 
-from gamelands.all_views import search_page_view
+from gamelands.all_views import search_page_view, profile_upload_form_view
 app_name = 'gamelands'
 urlpatterns = [
     path('', views.return_index, name= 'index'),
-    path('cabinet/', views.return_cabinet, name = 'cabinet'),
+    #path('cabinet/', views.return_cabinet, name = 'cabinet'),
+    path('cabinet/', profile_upload_form_view.profile_upload_form, name = 'cabinet'),
     path('mgs/', views.return_mgs, name='mgs' ),
     path('base-game/', views.return_base_game_page, name = 'base-game'),
     path('base/', views.get_base_page, name = 'base'),
